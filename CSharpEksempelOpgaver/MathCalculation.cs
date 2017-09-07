@@ -117,5 +117,38 @@ namespace CSharpEksempelOpgaver
 
             return Convert.ToUInt64(value);
         }
+
+        public static void SmallBigAverage()
+        {
+            List<int> values = new List<int>();
+            int value;
+
+            do
+            {
+                value = GetNumber();
+
+                if (value != 0)
+                {
+                    values.Add(value);
+                }
+                else
+                {
+                    Console.WriteLine("Antal tal: {0}", values.Count);
+                    Console.WriteLine("Summen: {0}", values.Sum());
+                    Console.WriteLine("Det mindste tal: {0}", values.Min());
+                    Console.WriteLine("Det største tal: {0}", values.Max());
+                    Console.WriteLine("Gennemsnittet: {0}", values.Average());
+                }
+            }
+            while (value != 0);
+        }
+
+        private static int GetNumber()
+        {
+            Console.Write("Indtast et tal (indtast 0 for at stoppe): ");
+            string value = Console.ReadLine();
+
+            return Convert.ToInt32(value);
+        }
     }
 }

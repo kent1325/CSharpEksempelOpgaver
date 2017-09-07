@@ -90,5 +90,32 @@ namespace CSharpEksempelOpgaver
             double a = r * r * Math.PI;
             return a;
         }
+
+        public static void SquareSum()
+        {
+            ulong number = GetInts();
+            ulong n = number;
+
+            while (number > 9)
+            {
+                ulong s = 0;
+
+                while (number > 0)
+                {
+                    s += number % 10;
+                    number /= 10;
+                }
+                number = s;
+            }
+            Console.WriteLine("The Squaresum of the digits: {0} is {1}", n, number);
+        }
+
+        private static ulong GetInts()
+        {
+            Console.Write("Please enter a bunch of psitive integers: ");
+            string value = Console.ReadLine();
+
+            return Convert.ToUInt64(value);
+        }
     }
 }

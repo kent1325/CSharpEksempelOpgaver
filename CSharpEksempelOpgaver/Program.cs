@@ -10,9 +10,9 @@ namespace CSharpEksempelOpgaver
     {
         static void Main(string[] args)
         {
-            MathCalculation.QuadraticEquation();
+            
 
-            //Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }

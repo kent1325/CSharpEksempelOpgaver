@@ -10,9 +10,9 @@ namespace CSharpEksempelOpgaver
     {
         static void Main(string[] args)
         {
-            
+            MathCalculation math = new MathCalculation();
 
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }

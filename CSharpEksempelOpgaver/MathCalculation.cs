@@ -150,5 +150,117 @@ namespace CSharpEksempelOpgaver
 
             return Convert.ToInt32(value);
         }
+
+        public static void Palindrom()
+        {
+            string text = null;
+
+            while (text != "")
+            {
+                Console.WriteLine("Indtast intet og tryk [ENTER] for at afslutte.");
+                Console.Write("Venligst indtast en tekst og se om det er en Palindrom: ");
+                text = Console.ReadLine();
+
+                if (text != "")
+                {
+                    if (isPalindrom(text.ToLower()))
+                    {
+                        Console.WriteLine("Tillykke, det er en Palindrom!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("ØV, det er ikke en Palindrom!");
+                    }
+                    Console.WriteLine("-----------------------------------------------------------");
+                    Console.WriteLine();
+                }
+            }
+        }
+
+        private static bool isPalindrom(string text)
+        {
+            for (int firstChar = 0, lastChar = text.Length - 1; firstChar < lastChar;)
+            {
+                if (!isCharOK(text[firstChar]) && !isCharOK(text[lastChar]))
+                {
+                    firstChar++;
+                    lastChar--;
+                }
+                else if (!isCharOK(text[firstChar]))
+                {
+                    firstChar++;
+                }
+                else if (!isCharOK(text[lastChar]))
+                {
+                    lastChar--;
+                }
+                else if (text[firstChar] != text[lastChar])
+                {
+                    return false;
+                }
+                else
+                {
+                    firstChar++;
+                    lastChar--;
+                }
+            }
+
+            return true;
+        }
+
+        private static bool isCharOK(char ch)
+        {
+            return (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9') || ch == 'æ' || ch == 'ø' || ch == 'å';
+        }
+
+        public void Yatzy()
+        {
+            ThrowDices();
+        }
+
+        private static int[] ThrowDices()
+        {
+            Random random = new Random();
+            int counter = 0;
+            int[] dices = new int[5];
+
+            do
+            {
+                Console.Write("[");
+                for (int i = 0; i < dices.Length; i++)
+                {
+                    dices[i] = random.Next(1, 7);
+                    counter++;
+
+                    if (i < dices.Length - 1)
+                    {
+                        Console.Write(dices[i] + ", ");
+                    }
+                    else
+                    {
+                        Console.Write(dices[i] + "]");
+                    }
+                }
+                Console.WriteLine();
+            }
+            while (!IsYatzy(dices));
+
+            Console.WriteLine("YATZY! It only took you " + counter + " attempts.");
+
+            return dices;
+        }
+
+        private static bool IsYatzy(int[] dices)
+        {
+            for (int i = 0; i < dices.Length; i++)
+            {
+                if (dices[i] != dices[0])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
